@@ -7,16 +7,15 @@ module top (
 	output LED5
 );
 
-	reg [21:0] counter = 0;
+	reg [24:0] counter = 0;
 	reg [5:0] testt = 1;
-	reg bitt = testt[5:5];
 
 	always @(posedge clk) begin
-		counter <= counter + 1;
+		counter <= counter + 2;
 	end
 
-	always @(posedge counter[21:21]) begin
-		testt <= testt + testt + bitt;
+	always @(posedge counter[24:24]) begin
+		testt <= testt + testt + testt[5:5];
 	end
 	
 	assign {LED5, LED4, LED3, LED2, LED1} = testt;
